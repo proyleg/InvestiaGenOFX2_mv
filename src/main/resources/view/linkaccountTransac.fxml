@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<AnchorPane id="AnchorPane" prefHeight="185.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="investiagenofx2.view.LinkaccountTransacController">
+   <children>
+      <Label fx:id="lbl_LnkAccountTransac" layoutX="32.0" layoutY="66.0" prefHeight="17.0" prefWidth="205.0" />
+      <Button layoutX="55.0" layoutY="136.0" mnemonicParsing="false" onAction="#handleBtnAncienCompte" text="Ancien compte" />
+      <Button fx:id="btn_Associer" layoutX="255.0" layoutY="136.0" mnemonicParsing="false" onAction="#handleBtnLinkAccount" text="Associer" />
+      <ComboBox fx:id="cbo_linkaccount" layoutX="255.0" layoutY="62.0" prefHeight="25.0" prefWidth="326.0" />
+      <Label alignment="TOP_CENTER" layoutX="214.0" layoutY="14.0" prefHeight="20.0" prefWidth="135.0" text="Associer les comptes" underline="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

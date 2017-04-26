@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.40" fx:controller="investiagenofx2.view.InvestmentsSummaryController">
+	<children>
+		<TableView fx:id="table_tv" layoutX="14.0" layoutY="49.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
+			<columns>
+				<TableColumn fx:id="symbol_tc" prefWidth="75.0" text="Symbole" />
+				<TableColumn fx:id="name_tc" prefWidth="230.0" text="Description" />
+				<TableColumn fx:id="lastPrice_tc" prefWidth="70.0" text="Prix" />
+				<TableColumn fx:id="quantity_tc" prefWidth="80.0" text="Quantité" />
+				<TableColumn fx:id="marketValue_tc" prefWidth="95.0" text="Valeur" />
+				<TableColumn fx:id="percentage_tc" prefWidth="50.0" text="\%" />
+			</columns>
+		</TableView>
+	</children>
+</AnchorPane>

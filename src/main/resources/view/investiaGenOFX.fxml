@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="investiagenofx2.view.InvestiaGenOFXController">
+   <children>
+      <MenuBar AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="_Fichier">
+            <items>
+              <MenuItem fx:id="mnu_quitter" onAction="#handleMnuQuit" text="_Quitter">
+                     <accelerator>
+                        <KeyCodeCombination alt="DOWN" code="Q" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="_Aide">
+            <items>
+              <MenuItem onAction="#handleMnuAbout" text="À _Propos" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+         <children>
+            <ComboBox fx:id="cbo_clientNum" editable="true" layoutX="156.0" layoutY="52.0" />
+            <PasswordField fx:id="psw_password" layoutX="156.0" layoutY="91.0" />
+            <Button fx:id="btn_login" layoutX="422.0" layoutY="27.0" mnemonicParsing="false" onAction="#handleBtnLogin" prefHeight="36.0" prefWidth="94.0" text="Login" />
+            <DatePicker fx:id="dtp_lastDate" layoutX="86.0" layoutY="236.0" />
+            <Button fx:id="btn_logout" layoutX="422.0" layoutY="77.0" mnemonicParsing="false" onAction="#handleBtnLogout" prefHeight="36.0" prefWidth="94.0" text="Logout" />
+            <TextField fx:id="txt_investiaURL" layoutX="156.0" layoutY="14.0" prefHeight="25.0" prefWidth="200.0" />
+            <Label layoutX="54.0" layoutY="18.0" text="Lien Investia :" />
+            <Label layoutX="54.0" layoutY="56.0" text="Numéro de client :" />
+            <Label layoutX="54.0" layoutY="95.0" text="Mot de passe :" />
+            <Button fx:id="btn_accounts" layoutX="302.0" layoutY="229.0" mnemonicParsing="false" onAction="#handleBtnAccounts" prefHeight="40.0" prefWidth="240.0" text="Génère le fichier OFX" />
+            <Label fx:id="lbl_message" layoutX="86.0" layoutY="353.0" prefHeight="17.0" prefWidth="456.0" />
+            <Label layoutX="305.0" layoutY="134.0" text="Comptes de:" underline="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="92.0" layoutY="205.0" text="À partir de cette date" />
+            <Label fx:id="lbl_ownername" layoutX="394.0" layoutY="134.0" prefHeight="17.0" prefWidth="148.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="cbo_accounts" layoutX="302.0" layoutY="165.0" prefHeight="25.0" prefWidth="240.0" />
+            <Button fx:id="btn_summary" layoutX="302.0" layoutY="277.0" mnemonicParsing="false" onAction="#handleBtnSummary" prefHeight="40.0" prefWidth="240.0" text="Voir sommaire" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
