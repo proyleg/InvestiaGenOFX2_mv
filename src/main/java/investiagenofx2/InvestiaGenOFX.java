@@ -62,6 +62,8 @@ public class InvestiaGenOFX extends Application {
         primaryStage.setTitle("Génération de fichier OFX pour Investia");
         primaryStage.setScene(scene);
         primaryStage.show();
+        primaryStage.setX(640);
+        primaryStage.setY(150);
 
         setOnCloseRequest(primaryStage);
 

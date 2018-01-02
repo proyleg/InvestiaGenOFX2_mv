@@ -457,10 +457,12 @@ public class InvestiaGenOFXController implements Initializable {
                 String[] token = transacType.split("[\\-/(]");
                 switch (token[0].replace(" ", "").toLowerCase()) {
                     case "dividendes":
+                    case "reinvesteddividend":         // Patch anglais
                         transacType = "Distribution";
                         break;
                     case "achat":
                     case "échangeentrant":
+                    case "échangeent.":
                     case "prélèvementautomatique":
                     case "transfertentrantdecourtier":
                     case "transfertexterneentrant":
@@ -468,6 +470,7 @@ public class InvestiaGenOFXController implements Initializable {
                         transacType = "Purchase";
                         break;
                     case "échangesortant":
+                    case "échangesort.":
                     case "rachat":
                     case "transfertexternesortant":
                     case "transf.int.sort.":
