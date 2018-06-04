@@ -22,6 +22,8 @@ public class PropertiesInit {
     private static String investiaURL;
     private static String lastGenUsedDate;
     private static String clientNumList;
+    private static Double stageX;
+    private static Double stageY;
     private static ArrayList<String> linkAccounts = new ArrayList<>();
     private static ArrayList<String> linkAccountsTransac = new ArrayList<>();
 
@@ -32,12 +34,14 @@ public class PropertiesInit {
         Properties prop = new Properties();
         try {
             prop.load(new FileInputStream(InvestiaGenOFX.class.getSimpleName() + ".properties"));
-            if (!(prop.size() == 5)) {
+            if (!(prop.size() == 7)) {
                 initProperties();
             }
             investiaURL = prop.getProperty("investiaURL").trim();
             lastGenUsedDate = prop.getProperty("lastGenUsedDate").trim();
             clientNumList = prop.getProperty("clientNumList").trim();
+            stageX = Double.parseDouble(prop.getProperty("stageX").trim());
+            stageY = Double.parseDouble(prop.getProperty("stageY").trim());
             linkAccounts = stringToArrayList(prop.getProperty("linkAccounts"));
             linkAccountsTransac = stringToArrayList(prop.getProperty("linkAccountsTransac"));
         } catch (IOException ex) {
@@ -50,6 +54,8 @@ public class PropertiesInit {
         investiaURL = "https://clientportal.investia.ca";
         lastGenUsedDate = "2015-01-01";
         clientNumList = "";
+        stageX = 640.0;
+        stageY = 150.0;
         setProperties();
         getProperties();
     }
@@ -63,6 +69,10 @@ public class PropertiesInit {
             prop.setProperty("investiaURL", investiaURL);
             prop.setProperty("lastGenUsedDate", lastGenUsedDate);
             prop.setProperty("clientNumList", clientNumList);
+            stageX = InvestiaGenOFX.getPrimaryStage().getX();
+            stageY = InvestiaGenOFX.getPrimaryStage().getY();
+            prop.setProperty("stageX", stageX.toString());
+            prop.setProperty("stageY", stageY.toString());
 //            String[] accounts = accountsToString(linkAccounts, linkAccountsTransac);
 //            prop.setProperty("linkAccounts", accounts[0]);
 //            prop.setProperty("linkAccountsTransac", accounts[1]);
@@ -84,6 +94,14 @@ public class PropertiesInit {
             theString.append(",").append(arrayList.get(i));
         }
         return theString.toString();
+    }
+
+    public static Double getStageX() {
+        return stageX;
+    }
+
+    public static Double getStageY() {
+        return stageY;
     }
 
     private static String[] accountsToString(ArrayList<String> linkAccounts, ArrayList<String> linkAccountsTransac) {

@@ -21,10 +21,7 @@ import investiagenofx2.InvestiaGenOFX;
 import investiagenofx2.model.Account;
 import investiagenofx2.model.Investment;
 import investiagenofx2.model.Transaction;
-import investiagenofx2.util.MyOwnException;
-import investiagenofx2.util.OFXUtilites;
-import investiagenofx2.util.PropertiesInit;
-import investiagenofx2.util.Utilities;
+import investiagenofx2.util.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -455,46 +452,28 @@ public class InvestiaGenOFXController implements Initializable {
                 }
                 String transacType = htmlTable.getCellAt(i, 2).getTextContent();
                 String[] token = transacType.split("[\\-/(]");
-                switch (token[0].replace(" ", "").toLowerCase()) {
-                    case "dividendes":
-                    case "reinvesteddividend":         // Patch anglais
+                String investiaTransactionType = token[0].replace(" ", "").toLowerCase();
+                switch (TransactionType.getTransactionType(investiaTransactionType)) {
+                    case "Distribution":
                         transacType = "Distribution";
                         break;
-                    case "achat":
-                    case "échangeentrant":
-                    case "échangeent.":
-                    case "prélèvementautomatique":
-                    case "transfertentrantdecourtier":
-                    case "transfertexterneentrant":
-                    case "transfertinterneentrant":
+                    case "Purchase":
                         transacType = "Purchase";
                         break;
-                    case "échangesortant":
-                    case "échangesort.":
-                    case "rachat":
-                    case "transfertexternesortant":
-                    case "transf.int.sort.":
-                    case "transf.int.sortant":
-                    case "transfertinternesortant":
+                    case "Switch Out":
                         transacType = "Switch Out";
                         break;
-                    case "dépôt":
+                    case "Credit":
                         transacType = "Credit";
                         break;
-                    case "retrait":
-                    case "retenue":
+                    case "Debit":
                         transacType = "Debit";
                         break;
-                    case "créditenespèces":
-                    case "entréed'espèces":
-                    case "fraisd'administration":
-                    case "sortied'espèces":
-                    case "transfertd'espècesentrant":
-                    case "transfertd'espècessortant":
+                    case "Ignore":
                         continue;
                     default:
                         try {
-                            throw new MyOwnException("Type de transaction non prise en charge: " + transacType.trim());
+                            throw new MyOwnException("Type de transaction non prise en charge: " + transacType.trim()+ " investiatype " + investiaTransactionType);
                         } catch (MyOwnException ex) {
                             Logger.getLogger(OFXUtilites.class.getName()).log(Level.SEVERE, null, ex);
                             continue;
@@ -660,7 +639,7 @@ public class InvestiaGenOFXController implements Initializable {
         alert.setX(InvestiaGenOFX.getPrimaryStage().getX() + 100);
         alert.setY(InvestiaGenOFX.getPrimaryStage().getY() + 100);
         alert.setHeaderText("InvestiaGenOFX");
-        alert.setContentText("Version 2.0_11");
+        alert.setContentText("Version 2.0_16");
         alert.show();
     }
 }

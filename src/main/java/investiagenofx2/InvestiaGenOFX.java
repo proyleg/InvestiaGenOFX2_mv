@@ -10,9 +10,14 @@ import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.util.Cookie;
 //import com.gargoylesoftware.htmlunit.util.WebClientUtils;
 import static investiagenofx2.util.PropertiesInit.getProperties;
+import static investiagenofx2.util.TransactionType.initTransactionType;
+
 import java.io.IOException;
 import java.util.Locale;
 import java.util.logging.LogManager;
+
+import investiagenofx2.util.PropertiesInit;
+import investiagenofx2.util.TransactionType;
 import javafx.application.Application;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -62,8 +67,8 @@ public class InvestiaGenOFX extends Application {
         primaryStage.setTitle("Génération de fichier OFX pour Investia");
         primaryStage.setScene(scene);
         primaryStage.show();
-        primaryStage.setX(640);
-        primaryStage.setY(150);
+        primaryStage.setX(PropertiesInit.getStageX());
+        primaryStage.setY(PropertiesInit.getStageY());
 
         setOnCloseRequest(primaryStage);
 
@@ -89,6 +94,9 @@ public class InvestiaGenOFX extends Application {
             System.out.println("Unable to initialize logging.properties");
         }
         getProperties();
+        initTransactionType();
+//        System.out.println(TransactionType.getTransactionType("échangesortant"));
+
     }
 
     public static void setOnCloseRequest(Stage stage) {

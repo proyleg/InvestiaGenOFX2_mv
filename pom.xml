@@ -6,7 +6,7 @@
 
     <groupId>Investia</groupId>
     <artifactId>InvestiaGenOFX2</artifactId>
-    <version>2.11-Prod</version>
+    <version>2.16-Prod</version>
 
     <build>
         <plugins>

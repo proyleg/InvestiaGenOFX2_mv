@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<data type="transactiontypes">
+	<transactiontype name="Distribution">
+		<investiatype>dividendes</investiatype>
+	</transactiontype>
+	<transactiontype name="Purchase">
+		<investiatype>achat</investiatype>
+		<investiatype>échangeentrant</investiatype>
+		<investiatype>échangeent.</investiatype>
+		<investiatype>prélèvementautomatique</investiatype>
+		<investiatype>transfertentrantdecourtier</investiatype>
+		<investiatype>transfertexterneentrant</investiatype>
+		<investiatype>transfertinterneentrant</investiatype>
+	</transactiontype>
+	<transactiontype name="Switch Out">
+		<investiatype>échangesortant</investiatype>
+		<investiatype>échangesort.</investiatype>
+		<investiatype>rachat</investiatype>
+		<investiatype>transfertexternesortant</investiatype>
+		<investiatype>transf.int.sort.</investiatype>
+		<investiatype>transf.int.sortant</investiatype>
+		<investiatype>transfertinternesortant</investiatype>
+		<investiatype>fraisadministratifsdegestion</investiatype>
+	</transactiontype>
+	<transactiontype name="Credit">
+		<investiatype>dépôt</investiatype>
+	</transactiontype>
+	<transactiontype name="Debit">
+		<investiatype>retrait</investiatype>
+		<investiatype>retenue</investiatype>
+		<investiatype>retenuedetvp</investiatype>
+	</transactiontype>
+	<transactiontype name="Ignore">
+		<investiatype>créditenespèces</investiatype>
+		<investiatype>entréed'espèces</investiatype>
+		<investiatype>fraisd'administration</investiatype>
+		<investiatype>sortied'espèces</investiatype>
+		<investiatype>transfertd'espècesentrant</investiatype>
+		<investiatype>transfertd'espècessortant</investiatype>
+	</transactiontype>
+</data>
