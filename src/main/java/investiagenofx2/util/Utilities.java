@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -44,7 +45,7 @@ public class Utilities {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Utilities.class.getName()).log(Level.SEVERE, null, ex);
         }
-        printStream.print(strFile);
+        Objects.requireNonNull(printStream).print(strFile);
         try {
             JAXBContext jaxbContext = JAXBContext.newInstance(OFX.class);
             Marshaller jaxbMarshaller = jaxbContext.createMarshaller();

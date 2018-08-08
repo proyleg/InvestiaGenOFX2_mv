@@ -14,10 +14,10 @@ import static investiagenofx2.util.TransactionType.initTransactionType;
 
 import java.io.IOException;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.logging.LogManager;
 
 import investiagenofx2.util.PropertiesInit;
-import investiagenofx2.util.TransactionType;
 import javafx.application.Application;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -52,14 +52,14 @@ public class InvestiaGenOFX extends Application {
         pStage = primaryStage;
         // Make sure we are in English on French java plateform
         Locale.setDefault(Locale.ENGLISH);
-        webClient = new WebClient(BrowserVersion.FIREFOX_45);
+        webClient = new WebClient(BrowserVersion.FIREFOX_60);
         webClient.getOptions().setJavaScriptEnabled(!debug);
         webClient.getOptions().setCssEnabled(false);
         webClient.getOptions().setThrowExceptionOnScriptError(false);
         webClient.getCookieManager().addCookie(new Cookie("clientportal.investia.ca", "seen-popup", "true"));
         webClient.getCookieManager().addCookie(new Cookie("clientportal.investia.ca", "lang", "fr"));
 //        WebClientUtils.attachVisualDebugger(webClient);
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("view/investiaGenOFX.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("view/investiaGenOFX.fxml")));
 
 
         Scene scene = new Scene(root);
@@ -87,7 +87,7 @@ public class InvestiaGenOFX extends Application {
     }
 
     @Override
-    public void init() throws Exception {
+    public void init() {
         try {
             LogManager.getLogManager().readConfiguration(getClass().getClassLoader().getResourceAsStream("logging.properties"));
         } catch (IOException e) {

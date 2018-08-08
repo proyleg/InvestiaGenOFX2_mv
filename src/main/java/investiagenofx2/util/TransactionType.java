@@ -11,8 +11,8 @@ import java.io.File;
 import java.util.ArrayList;
 
 public class TransactionType {
-    private static ArrayList<String> transactionType = new ArrayList<>();
-    private static ArrayList<String> investiaType = new ArrayList<>();
+    private static final ArrayList<String> transactionType = new ArrayList<>();
+    private static final ArrayList<String> investiaType = new ArrayList<>();
 
     public static void initTransactionType() {
         try {

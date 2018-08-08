@@ -87,9 +87,9 @@ public class Transaction {
         return price;
     }
 
-    /**
-     * @return the unitBalance
-     */
+//    /**
+//     * @return the unitBalance
+//     */
     public String getUnitBalance() {
         return unitBalance;
     }

@@ -69,8 +69,10 @@ public class PropertiesInit {
             prop.setProperty("investiaURL", investiaURL);
             prop.setProperty("lastGenUsedDate", lastGenUsedDate);
             prop.setProperty("clientNumList", clientNumList);
-            stageX = InvestiaGenOFX.getPrimaryStage().getX();
-            stageY = InvestiaGenOFX.getPrimaryStage().getY();
+            if (InvestiaGenOFX.getPrimaryStage() != null) {
+                stageX = InvestiaGenOFX.getPrimaryStage().getX();
+                stageY = InvestiaGenOFX.getPrimaryStage().getY();
+            }
             prop.setProperty("stageX", stageX.toString());
             prop.setProperty("stageY", stageY.toString());
 //            String[] accounts = accountsToString(linkAccounts, linkAccountsTransac);

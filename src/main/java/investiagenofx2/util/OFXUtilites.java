@@ -277,7 +277,7 @@ public class OFXUtilites {
     /**
      * @return the intubid
      */
-    public static String getIntubid() {
+    private static String getIntubid() {
         return intubid;
     }
 

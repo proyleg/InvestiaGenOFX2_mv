@@ -60,8 +60,7 @@ import javafx.stage.Stage;
 import javafx.util.StringConverter;
 import ofx.OFX;
 import org.apache.commons.lang3.StringUtils;
-
-import static org.apache.commons.lang3.text.WordUtils.capitalizeFully;
+import static org.apache.commons.text.WordUtils.capitalizeFully;
 
 /**
  * FXML Controller class
@@ -567,7 +566,7 @@ public class InvestiaGenOFXController implements Initializable {
             if (accounts.get(i).getAccountID() == null) {
                 accounts.get(i).setAccountID(table.getCellAt(1, 3).getTextContent());
             }
-            Float total = 0f;
+            float total = 0f;
             for (int j = 1; j < table.getRowCount(); j++) {
                 String symbol = table.getCellAt(j, 1).getTextContent();
                 String name = table.getCellAt(j, 0).getTextContent();
@@ -576,7 +575,7 @@ public class InvestiaGenOFXController implements Initializable {
                 String marketValue = table.getCellAt(j, 7).getTextContent().replaceAll("[^0-9,]", "").replace(",", ".");
                 Investment investment = new Investment(symbol, name, quantity, lastPrice, marketValue);
                 accounts.get(i).add(investment);
-                total += Float.valueOf(marketValue);
+                total += Float.parseFloat(marketValue);
             }
             String totalString = String.format("%.02f", total);
             Investment investment = new Investment("", "Total", totalString, "1.00", totalString);
@@ -639,7 +638,7 @@ public class InvestiaGenOFXController implements Initializable {
         alert.setX(InvestiaGenOFX.getPrimaryStage().getX() + 100);
         alert.setY(InvestiaGenOFX.getPrimaryStage().getY() + 100);
         alert.setHeaderText("InvestiaGenOFX");
-        alert.setContentText("Version 2.0_16");
+        alert.setContentText("Version 2.0_17");
         alert.show();
     }
 }
