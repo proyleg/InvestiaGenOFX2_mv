@@ -376,6 +376,7 @@ public class InvestiaGenOFXController implements Initializable {
         for (Account account : accounts) {
             account.removeAllTransactions();
         }
+        fitids.clear();
         ArrayList<Account> accountsToGen = new ArrayList<>();
         if ("Tous les comptes".equals(cbo_accounts.getSelectionModel().getSelectedItem())) {
             accountsToGen = accounts;
@@ -544,20 +545,23 @@ public class InvestiaGenOFXController implements Initializable {
     }
 
     private void getAccountsInvestmentsFromWeb() {
-        List<HtmlTable> tables = htmlPage.getByXPath("//table[contains(@class, 'table-striped')]");
         LocalDate balancesAs = LocalDate.now();
-//        String labelDate = "Soldes au ";
-//        LocalDate balancesAs;
-//        @SuppressWarnings(("unchecked"))
-//        List<HtmlDivision> divBalancesAs = (List<HtmlDivision>) htmlPage.getByXPath("//div[contains(text(),'"+labelDate +"')]");
-//        if (divBalancesAs.size()>0) {
-//            balancesAs = LocalDate.parse(divBalancesAs.get(0).asText().replace(labelDate, ""), DateTimeFormatter.ofPattern("dd MMMM yyyy", Locale.CANADA_FRENCH));
-//        } else {
+        String labelDate = "ce rapport a été produit, soit le ";
+        List<HtmlDivision> divBalancesAs =  htmlPage.getByXPath("//div[contains(text(),'"+labelDate +"')]");
+        if (divBalancesAs.size()>0) {
+//            String debugtest = divBalancesAs.get(0).asText().split(labelDate)[1].replace(".", "").trim();
+            try {
+                balancesAs = LocalDate.parse(divBalancesAs.get(0).asText().split(labelDate)[1].replace(".", "").trim(), DateTimeFormatter.ofPattern("dd MMMM yyyy", Locale.CANADA_FRENCH));
+            }
+            catch (Exception e) {}
+        }
+            //        } else {
 //            labelDate = "Données en date du ";
 //            @SuppressWarnings(("unchecked"))
 //            List<HtmlDivision> divBalancesAs2 = (List<HtmlDivision>) htmlPage.getByXPath("//div[contains(text(),'" + labelDate + "')]");
 //            balancesAs = LocalDate.parse(divBalancesAs2.get(0).asText().replace(labelDate, ""), DateTimeFormatter.ISO_DATE);
 //        }
+        List<HtmlTable> tables = htmlPage.getByXPath("//table[contains(@class, 'table-striped')]");
         int i = 0;
         for (HtmlTable table : tables) {
             if (!table.asText().contains("Numéro de \r\n compte")) {
@@ -638,7 +642,7 @@ public class InvestiaGenOFXController implements Initializable {
         alert.setX(InvestiaGenOFX.getPrimaryStage().getX() + 100);
         alert.setY(InvestiaGenOFX.getPrimaryStage().getY() + 100);
         alert.setHeaderText("InvestiaGenOFX");
-        alert.setContentText("Version 2.0_17");
+        alert.setContentText("Version 2.0_19");
         alert.show();
     }
 }
